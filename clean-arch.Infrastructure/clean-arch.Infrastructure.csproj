@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\clean-arch.Domain\clean-arch.Domain.csproj" />
+    <ProjectReference Include="..\clean-arch.Application\clean-arch.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
