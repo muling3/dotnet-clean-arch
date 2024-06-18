@@ -23,11 +23,12 @@ public class EmployeeHelpers
         {
             FirstName = request.FirstName,
             LastName = request.LastName,
+            DisplayName = request.FirstName.Trim() + " " + request.LastName.Trim(),
             Email = request.Email,
             Phone = request.Phone,
             AlternativePhone = request.AlternativePhone ?? "",
             Gender = request.Gender,
-            DateOfBirth = request.DateOfBirth,
+            DateOfBirth = request.DateOfBirth.ToUniversalTime(),
         };
     }
 }

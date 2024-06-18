@@ -71,12 +71,12 @@ internal class EmployeeService : IEmployee
         var employee = await _ctx.Employees.FirstAsync(employee => employee.Id == id);
         employee.FirstName = request.FirstName;
         employee.LastName = request.LastName;
+        employee.DisplayName = request.FirstName.Trim() + " " + request.LastName.Trim();
         employee.Email = request.Email;
         employee.Phone = request.Phone;
         employee.AlternativePhone = request.AlternativePhone ?? "";
         employee.Gender = request.Gender;
-        employee.DateOfBirth = request.DateOfBirth;
-        employee.UpdatedAt = DateTime.Now;
+        employee.DateOfBirth = request.DateOfBirth.ToUniversalTime();
 
         _ctx.Entry<Employee>(employee).State = EntityState.Modified;
         await _ctx.SaveChangesAsync();

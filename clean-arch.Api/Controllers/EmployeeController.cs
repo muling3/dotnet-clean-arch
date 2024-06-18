@@ -24,7 +24,7 @@ public class EmployeeController : ControllerBase
         }
         else if ((email ?? "").Trim().Length > 0)
         {
-            return Ok(await _employeeService.GetEmployeeByEmail(email));
+            return Ok(await _employeeService.GetEmployeeByEmail(email!));
 
         }
 
@@ -35,7 +35,7 @@ public class EmployeeController : ControllerBase
     public async Task<IActionResult> CreateEmployeeAsync([FromBody] EmployeeRequest request)
     {
         var id = await _employeeService.CreateEmployee(request);
-        return CreatedAtAction("GetEmployeeByIdOrEmailAsync", new { id });
+        return Created(nameof(GetEmployeeByIdOrEmailAsync), new { id, email = (string?)null });
     }
 
     [HttpPut(Name = "Update an Employee")]
