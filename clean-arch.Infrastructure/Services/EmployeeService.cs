@@ -19,6 +19,12 @@ internal class EmployeeService : IEmployee
         _logger = iLogger;
     }
 
+    public async Task<List<EmployeeDTO>> GetAllEmployees()
+    {
+        var employees = await _ctx.Employees.ToListAsync();
+        return employees.Select(EmployeeHelpers.MapEmployeeToEmployeeDTO).ToList();
+    }
+
     public async Task<int> CreateEmployee(EmployeeRequest request)
     {
         var employee = EmployeeHelpers.MapEmployeeRequestToEmployee(request);
