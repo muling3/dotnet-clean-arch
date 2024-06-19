@@ -19,7 +19,7 @@ public static class ServiceExtensions
         services.AddControllers();
 
         services.AddDbContext<AuthDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("MainDb"), db => db.MigrationsAssembly("clean-arch.Infrastructure")));
-        services.AddIdentityApiEndpoints<User>().AddEntityFrameworkStores<AuthDbContext>();
+        services.AddIdentityApiEndpoints<User>().AddRoles<Role>().AddEntityFrameworkStores<AuthDbContext>();
         // services.AddAuthorization();
 
         //     services.AddSwaggerGen(opt =>
