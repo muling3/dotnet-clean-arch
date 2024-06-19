@@ -15,6 +15,7 @@ public static class ServiceExtensions
     {
         services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("MainDb")));
         services.AddScoped<IEmployee, EmployeeService>();
+
         services.AddAuth(configuration);
     }
 }
