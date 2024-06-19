@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using clean_arch.Authentication.Extensions;
+
 namespace clean_arch.Infrastructure.Extensions;
 
 public static class ServiceExtensions
@@ -13,5 +15,6 @@ public static class ServiceExtensions
     {
         services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("MainDb")));
         services.AddScoped<IEmployee, EmployeeService>();
+        services.AddAuth(configuration);
     }
 }

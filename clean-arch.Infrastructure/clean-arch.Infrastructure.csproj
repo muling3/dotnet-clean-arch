@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\clean-arch.Domain\clean-arch.Domain.csproj" />
+    <ProjectReference Include="..\clean-arch.Authentication\clean-arch.Authentication.csproj" />
   </ItemGroup>
 
   <ItemGroup>
