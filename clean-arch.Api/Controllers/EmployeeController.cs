@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using clean_arch.Infrastructure.Interfaces;
 using clean_arch.Domain.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace clean_arch.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class EmployeeController : ControllerBase
 {
     private readonly IEmployee _employeeService;

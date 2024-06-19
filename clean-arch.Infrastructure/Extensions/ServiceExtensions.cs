@@ -14,6 +14,8 @@ public static class ServiceExtensions
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("MainDb")));
+        services.AddAuthorization();
+
         services.AddScoped<IEmployee, EmployeeService>();
 
         services.AddAuth(configuration);
